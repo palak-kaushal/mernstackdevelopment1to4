@@ -217,7 +217,7 @@ const updateUserById = async (req,res) => {
         const {id,...data} = req.body
         if(!id){
             return res.json({
-                status:400,
+                status:300,
                 success:false,
                 message:"id is required"
             })

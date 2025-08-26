@@ -4,9 +4,9 @@ const { createUser, loginUser, getAllUser, getUserById, updateUserById, deleteUs
 
 router.post("/createuser", createUser)
 router.post("/loginuser", loginUser)
-router.post("/getAlluser", getAllUser)
-router.post("/getuserByid", getUserById)
-router.post("/updateUserById", updateUserById)
+router.get("/getAlluser", getAllUser)
+router.get("/getuserByid", getUserById)
+router.put("/updateUserById", updateUserById)
 router.post("/deleteUserById", deleteUserById)
 
 

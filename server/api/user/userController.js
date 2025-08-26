@@ -107,14 +107,30 @@ const loginUser = async (req,res) =>{
     }
 }
 
-const getAllUser = async(req,res) =>{
+//getalluer
+const getAllUser = async(req,res) => {
     try{
-        const user = await User.find()
+        let {limit=3,page=1} = req.query
+
+        limit = parseInt(limit)
+        page = parseInt(page)
+
+        //calculation of skip
+
+        const skip = (page-1) * limit
+        const user = await User.find().skip(skip).limit(limit)
+        const totalDocument = await User.countDocuments()
         res.json({
             status:200,
             success:true,
-            message:"all user get succesfully",
-            data:user
+            message:"all user is get successfully",
+            data:user,
+            pagination:{
+                totalDocument,
+                currentPage:page,
+                totalPage:Math.ceil(totalDocument/limit),
+                perPage:limit
+            }
         })
 
     }
@@ -122,14 +138,39 @@ const getAllUser = async(req,res) =>{
         res.json({
             status:500,
             success:false,
-            message:"internal server error",err,
+            message:"user can not get successfully",
             error:err.message
+
         })
+
+
 
     }
 }
 
-//get user by id
+// const getAllUser = async(req,res) =>{
+//     try{
+//         const user = await User.find()
+//         res.json({
+//             status:200,
+//             success:true,
+//             message:"all user get succesfully",
+//             data:user
+//         })
+
+//     }
+//     catch(err){
+//         res.json({
+//             status:500,
+//             success:false,
+//             message:"internal server error",err,
+//             error:err.message
+//         })
+
+//     }
+// }
+
+// get user by id
 
 const getUserById = async(req,res) =>{
     try{
@@ -245,7 +286,7 @@ const deleteUserById = async(req,res) =>{
             success:false,
             message:"internal server error",
             error:err.message
-        })
+        }) 
 
     }
 }

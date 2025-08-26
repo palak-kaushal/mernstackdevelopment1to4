@@ -7,8 +7,8 @@ const {createAdmin} = require("./server/config/seed")
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 app.use("/api",route)
-createAdmin()
 db()
+createAdmin()
 
 
 const port = process.env.PORT

@@ -11,6 +11,12 @@ const userSchema = new mongoose.Schema({
         unique:true,
         required:true
     },
+    identyProff:{
+        type:String,
+       required:true,
+       default:""
+
+    },
     password:{
        type:String,
        required:true,

@@ -36,6 +36,19 @@ type:String
         required:true,
         default:""
     },
+    otp:{
+        type:String,
+        default:""
+    },
+    email:{
+        type:String,
+        required:true,
+        default:""
+
+    },
+    
+
+
     createdAt:{
         type:Date,
         default:Date.now()

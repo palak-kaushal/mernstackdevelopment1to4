@@ -1,4 +1,4 @@
-const mongoose = require("mongoose")
+const mongoose  = require("mongoose")
 
 const postSchema = new mongoose.Schema({
     title:{
@@ -13,8 +13,6 @@ const postSchema = new mongoose.Schema({
         type:mongoose.Schema.Types.ObjectId,
         ref:"User"
     }
-
-
 })
 
 const Post = mongoose.models.Post || mongoose.model("Post",postSchema)

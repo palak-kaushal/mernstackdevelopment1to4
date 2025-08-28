@@ -1,3 +1,4 @@
+const { truncates } = require("bcryptjs")
 const mongoose = require("mongoose")
 
 const userSchema = new mongoose.Schema({
@@ -11,11 +12,14 @@ const userSchema = new mongoose.Schema({
         unique:true,
         required:true
     },
-    identyProff:{
-        type:String,
-       required:true,
-       default:""
-
+    image:{
+type:String
+    },
+    pancard:{
+        type:String
+    },
+    addharcard:{
+        type:String
     },
     password:{
        type:String,
